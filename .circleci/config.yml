@@ -1,0 +1,14 @@
+version: 2
+
+defaults: &defaults
+  working_directory: /src/go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+  docker:
+    - image: golang:latest
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: go test -v ./...
+
